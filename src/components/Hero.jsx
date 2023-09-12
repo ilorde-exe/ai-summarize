@@ -15,7 +15,7 @@ const Hero = () => {
             ze
           </h1>
         </div>
-        {/* Github */}
+        {/* Github button */}
         <button
           type="button"
           class="text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 mr-2 mb-2"
@@ -33,9 +33,21 @@ const Hero = () => {
               clip-rule="evenodd"
             />
           </svg>
-          Sign in with Github
+          Github
         </button>
       </nav>
+      <h1 className=" pb-4 mt-5 text-5xl font-extrabold leading-[1.15] text-black sm:text-6xl text-center">
+        Summarize any
+        <br className=" max-md:hidden" />
+        <span className="pl-2">text with</span>
+        <br className=" max-md:hidden" />
+        <span className=" pl-2 text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text">
+          OpenAI GPT
+        </span>
+      </h1>
+      <h2 className="mt-5 text-lg text-gray-600 sm:text-xl text-center max-w-2xl">
+        Make your reading a breeze with SummrAIze an open source text summarizer that uses OpenAi's state of the art GPT models to transform long and lengthy articles into bite sized summaries. 
+      </h2>
     </header>
   );
 };
