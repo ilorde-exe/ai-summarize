@@ -6,7 +6,7 @@ const Hero = () => {
       {/* Logo for the app */}
       <nav className="flex items-center justify-between mb-10 pt-3 w-full">
         <div className=" object-contain flex justify-center items-center">
-          <img src="src\assets\logo.svg" alt="image" className="w-16" />
+          <img src="src\assets\logo.svg" alt="image" className="mr-2 w-16" />
           <h1 className="flex font-satoshi text-4xl font-extrabold py-1 mb-2 text-center ">
             Summr
             <h1 className="font-satoshi text-4xl font-extrabold text-center text-transparent bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 bg-clip-text">
