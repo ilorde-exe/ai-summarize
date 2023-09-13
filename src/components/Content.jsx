@@ -5,6 +5,7 @@ const Content = () => {
   const [article, setArticle] = useState({ url: "", summary: "" });
   const [allArticles, setAllAritcles] = useState([]);
   const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery();
+  const [copied, setCopied] = useState("");
 
   useEffect(() => {
     const articlesFromLocalStorage = JSON.parse(
@@ -14,6 +15,8 @@ const Content = () => {
       setAllAritcles(articlesFromLocalStorage);
     }
   }, []);
+
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,7 +59,63 @@ const Content = () => {
             ↲
           </button>
         </form>
-        <div className="flex flex-col gap-1 max-h-60 overflow-y-auto"></div>
+
+        {/* Previous links to other summaries */}
+        <div className="flex flex-col gap-1 max-h-60 overflow-y-auto">
+          {allArticles.map((item, index) => (
+            <div
+              key={`link-${index}`}
+              onClick={() => setArticle(item)}
+              className="p-3 flex justify-start items-center flex-row bg-white border border-gray-200 gap-3 rounded-lg cursor-pointer"
+            >
+              <div className="w-7 h-7 rounded-full bg-white/10 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur flex justify-center items-center cursor-pointer">
+                <img
+                  src="src\assets\copy.svg"
+                  alt="copy_img"
+                  className="w-[40%] h-[40%] object-contain"
+                />
+              </div>
+              <p className="flex-1 font-satoshi text-blue-700 font-medium text-sm truncate">
+                {item.url}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Display Summary */}
+        <div className="my-10 max-w-full justify-center items-center">
+          {isFetching ? (
+            <img
+              src="src\assets\loader.svg"
+              alt="loading..."
+              className="w-20 h-20 object-contain"
+            />
+          ) : error ? (
+            <p className="font-inter font-bold text-black text-center">
+              Well we seem to be having some trouble...
+              <br />
+              <span className="font-satoshi font-normal text-gray-700">
+                {error?.data?.error}
+              </span>
+            </p>
+          ) : (
+            article.summary && (
+              <div className="flex flex-col gap-3">
+                <h2>
+                  Article
+                  <span className="pr-2 font-satoshi font-bold text-xl text-transparent bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 bg-clip-text">
+                    Summary
+                  </span>
+                </h2>
+                <div className="rounded-xl border border-gray-200 bg-white/20 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-4">
+                  <p className="font-inter font-medium text-sm text-gray-700">
+                    {article.summary}
+                  </p>
+                </div>
+              </div>
+            )
+          )}
+        </div>
       </div>
     </section>
   );
