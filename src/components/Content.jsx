@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { useLazyGetSummaryQuery } from "../services/article";
 
 const Content = () => {
+  const tick = "src\\assets\\tick.svg";
+  const copy = "src\\assets\\copy.svg";
+
   const [article, setArticle] = useState({ url: "", summary: "" });
   const [allArticles, setAllAritcles] = useState([]);
   const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery();
@@ -16,6 +19,11 @@ const Content = () => {
     }
   }, []);
 
+  const handleCopy = (copyUrl) => {
+    setCopied(copyUrl);
+    navigator.clipboard.writeText(copyUrl);
+    setTimeout(() => setCopied(false), 3000);
+  };
   
 
   const handleSubmit = async (e) => {
@@ -68,10 +76,13 @@ const Content = () => {
               onClick={() => setArticle(item)}
               className="p-3 flex justify-start items-center flex-row bg-white border border-gray-200 gap-3 rounded-lg cursor-pointer"
             >
-              <div className="w-7 h-7 rounded-full bg-white/10 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur flex justify-center items-center cursor-pointer">
+              <div
+                className="w-7 h-7 rounded-full bg-white/10 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur flex justify-center items-center cursor-pointer"
+                onClick={handleCopy}
+              >
                 <img
-                  src="src\assets\copy.svg"
-                  alt="copy_img"
+                  src={copied == item.url ? tick : copy}
+                  alt={copied === item.url ? "tick_icon" : "copy_icon"}
                   className="w-[40%] h-[40%] object-contain"
                 />
               </div>
@@ -100,10 +111,10 @@ const Content = () => {
             </p>
           ) : (
             article.summary && (
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-3 font-bold text-xl ">
                 <h2>
                   Article
-                  <span className="pr-2 font-satoshi font-bold text-xl text-transparent bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 bg-clip-text">
+                  <span className="pl-1 font-satoshi font-bold text-xl text-transparent bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 bg-clip-text">
                     Summary
                   </span>
                 </h2>
