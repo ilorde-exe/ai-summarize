@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useLazyGetSummaryQuery } from "../services/article";
 
 const Content = () => {
-  const tick = "src\\assets\\tick.svg";
-  const copy = "src\\assets\\copy.svg";
+  const tick = "images/tick.svg";
+  const copy = "images/copy.svg";
 
   const [article, setArticle] = useState({ url: "", summary: "" });
   const [allArticles, setAllAritcles] = useState([]);
@@ -24,7 +24,6 @@ const Content = () => {
     navigator.clipboard.writeText(copyUrl);
     setTimeout(() => setCopied(false), 3000);
   };
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,7 +45,7 @@ const Content = () => {
           onSubmit={handleSubmit}
         >
           <img
-            src="src\assets\link.svg"
+            src="images/link.svg"
             alt="link_icon"
             className="absolute left-0 my-2 ml-3 w-5"
           />
@@ -97,7 +96,7 @@ const Content = () => {
         <div className="my-10 max-w-full justify-center items-center">
           {isFetching ? (
             <img
-              src="src\assets\loader.svg"
+              src="images/loader.svg"
               alt="loading..."
               className="w-20 h-20 object-contain"
             />
