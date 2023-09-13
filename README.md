@@ -93,7 +93,7 @@ This project is licensed under the GNU License - see the [LICENSE.md](LICENSE.md
 
 - [React](https://reactjs.org/)
 - [Redux](https://redux.js.org/)
-- [Chat GPT API](https://www.openai.com/chat-gpt)
+- [Rapid API](https://rapidapi.com)
 
 ---
 
