@@ -1,7 +1,7 @@
 import React from "react";
-import Demo from "./components/Demo";
 import Hero from "./components/Hero";
 import "./App.css";
+import Content from "./components/Content";
 
 const App = () => {
   return (
@@ -11,7 +11,7 @@ const App = () => {
       </div>
       <div className="app">
         <Hero />
-        <Demo />
+        <Content />
       </div>
     </main>
   );

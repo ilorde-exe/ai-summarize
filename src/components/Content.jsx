@@ -1,16 +1,29 @@
 import { useState, useEffect } from "react";
 import { useLazyGetSummaryQuery } from "../services/article";
 
-const Demo = () => {
+const Content = () => {
   const [article, setArticle] = useState({ url: "", summary: "" });
+  const [allArticles, setAllAritcles] = useState([]);
   const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery();
-  
+
+  useEffect(() => {
+    const articlesFromLocalStorage = JSON.parse(
+      localStorage.getItem("articles")
+    );
+    if (articlesFromLocalStorage) {
+      setAllAritcles(articlesFromLocalStorage);
+    }
+  }, []);
+
   const handleSubmit = async (e) => {
-    e.preventDefault( );
+    e.preventDefault();
     const { data } = await getSummary({ articleUrl: article.url });
     if (data?.summary) {
       const newArticle = { ...article, summary: data.summary };
+      const updatedAllArticles = [newArticle, ...allArticles];
       setArticle(newArticle);
+      setAllAritcles(updatedAllArticles);
+      localStorage.setItem("articles", JSON.stringify(updatedAllArticles));
       console.log(newArticle);
     }
   };
@@ -43,9 +56,10 @@ const Demo = () => {
             ↲
           </button>
         </form>
+        <div className="flex flex-col gap-1 max-h-60 overflow-y-auto"></div>
       </div>
     </section>
   );
 };
 
-export default Demo;
+export default Content;
