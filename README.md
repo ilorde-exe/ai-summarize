@@ -23,7 +23,7 @@ To get started with SummrAIze, follow these steps:
 2. Navigate to the project directory:
 
    ```bash
-   cd summAIze
+   cd ai-summarize
    ```
 
 3. Install dependencies:
