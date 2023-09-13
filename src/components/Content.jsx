@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import { useLazyGetSummaryQuery } from "../services/article";
 
 const Content = () => {
-
-
   const [article, setArticle] = useState({ url: "", summary: "" });
   const [allArticles, setAllAritcles] = useState([]);
   const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery();
@@ -70,9 +68,8 @@ const Content = () => {
             >
               <div
                 className="w-7 h-7 rounded-full bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur flex justify-center items-center cursor-pointer"
-                onClick={handleCopy}
-              >
-              </div>
+                onClick={() => {}}
+              ></div>
               <p className="flex-1 font-satoshi text-blue-700 font-medium text-sm truncate">
                 {item.url}
               </p>
