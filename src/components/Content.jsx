@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import { useLazyGetSummaryQuery } from "../services/article";
 
 const Content = () => {
-  const tick = "images/tick.svg";
-  const copy = "images/copy.svg";
+
 
   const [article, setArticle] = useState({ url: "", summary: "" });
   const [allArticles, setAllAritcles] = useState([]);
@@ -18,12 +17,6 @@ const Content = () => {
       setAllAritcles(articlesFromLocalStorage);
     }
   }, []);
-
-  const handleCopy = (copyUrl) => {
-    setCopied(copyUrl);
-    navigator.clipboard.writeText(copyUrl);
-    setTimeout(() => setCopied(false), 3000);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -76,14 +69,9 @@ const Content = () => {
               className="p-3 flex justify-start items-center flex-row bg-white border border-gray-200 gap-3 rounded-lg cursor-pointer"
             >
               <div
-                className="w-7 h-7 rounded-full bg-white/10 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur flex justify-center items-center cursor-pointer"
+                className="w-7 h-7 rounded-full bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur flex justify-center items-center cursor-pointer"
                 onClick={handleCopy}
               >
-                <img
-                  src={copied == item.url ? tick : copy}
-                  alt={copied === item.url ? "tick_icon" : "copy_icon"}
-                  className="w-[40%] h-[40%] object-contain"
-                />
               </div>
               <p className="flex-1 font-satoshi text-blue-700 font-medium text-sm truncate">
                 {item.url}
