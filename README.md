@@ -34,7 +34,7 @@ To get started with SummrAIze, follow these steps:
 
 4. Configure the Chat GPT API:
 
-   - Sign up for an API key from [Rapid API](https://rapidapi.com/restyler/api/article-extractor-and-summarizer).
+   - Sign up for an API key 
    - Create a `.env` file in the project root and add your API key as follows:
 
      ```env
