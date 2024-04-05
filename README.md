@@ -38,7 +38,7 @@ To get started with SummrAIze, follow these steps:
    - Create a `.env` file in the project root and add your API key as follows:
 
      ```env
-     VITE_RAPIDAPI_KEY=YOUR_API_KEY
+     VITE_API_KEY=YOUR_API_KEY
      ```
 
 5. Start the development server:
